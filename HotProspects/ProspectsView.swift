@@ -13,6 +13,8 @@ struct ProspectsView: View {
     case none, contacted, uncontacted
   }
 
+  @EnvironmentObject var prospects: Prospects
+
   let filter: FilterType
 
   var title: String {
@@ -29,7 +31,18 @@ struct ProspectsView: View {
   //MARK: - View body
     var body: some View {
       NavigationView {
-        Text("Hell World!")
+        Text("People: \(prospects.people.count)")
+          .navigationTitle(title)
+          .toolbar {
+            Button {
+              let prospect = Prospect()
+              prospect.name = "Nik Nikitin"
+              prospect.emailAddress = "nikitin.nikolay.v@gmail.com"
+              prospects.people.append(prospect)
+            } label: {
+              Label("Scan", systemImage: "qrcode.viewfinder")
+            }
+          }
       }
     }
 }
