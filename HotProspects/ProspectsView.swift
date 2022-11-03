@@ -56,14 +56,14 @@ struct ProspectsView: View {
           .swipeActions {
             if prospect.isContacted {
               Button {
-                prospects.toggle(prospect)
+                prospects.add(prospect)
               } label: {
                 Label("Mark uncontacted", systemImage: "person.crop.circle.badge.xmark")
               }
               .tint(.blue)
             } else {
               Button {
-                prospects.toggle(prospect)
+                prospects.add(prospect)
               } label: {
                 Label("Mark Contacted", systemImage: "person.crop.circle.fill.badge.checkmark")
               }
@@ -96,7 +96,7 @@ struct ProspectsView: View {
       let person = Prospect()
       person.name = details[0]
       person.emailAddress = details[1]
-      prospects.people.append(person)
+      prospects.add(person)
     case .failure(let error):
       print("Scanning failed: \(error.localizedDescription)")
     }
