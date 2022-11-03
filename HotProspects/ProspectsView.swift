@@ -30,10 +30,48 @@ struct ProspectsView: View {
     }
   }
 
+  var filtereredProspects: [Prospect] {
+    switch filter {
+    case .none:
+      return prospects.people
+    case .contacted:
+      return prospects.people.filter { $0.isContacted }
+    case .uncontacted:
+      return prospects.people.filter { !$0.isContacted }
+    }
+  }
+
   //MARK: - View body
   var body: some View {
     NavigationView {
-      Text("People: \(prospects.people.count)")
+      List {
+        ForEach(filtereredProspects) { prospect in
+          VStack(alignment: .leading) {
+            Text(prospect.name)
+              .font(.headline)
+
+            Text(prospect.emailAddress)
+              .foregroundColor(.secondary)
+          }
+          .swipeActions {
+            if prospect.isContacted {
+              Button {
+                prospects.toggle(prospect)
+              } label: {
+                Label("Mark uncontacted", systemImage: "person.crop.circle.badge.xmark")
+              }
+              .tint(.blue)
+            } else {
+              Button {
+                prospects.toggle(prospect)
+              } label: {
+                Label("Mark Contacted", systemImage: "person.crop.circle.fill.badge.checkmark")
+              }
+              .tint(.green)
+            }
+          }
+        }
+      }
         .navigationTitle(title)
         .toolbar {
           Button {
