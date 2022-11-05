@@ -7,6 +7,7 @@
 
 import CodeScanner
 import SwiftUI
+import UserNotifications
 
 struct ProspectsView: View {
 
@@ -68,6 +69,13 @@ struct ProspectsView: View {
                 Label("Mark Contacted", systemImage: "person.crop.circle.fill.badge.checkmark")
               }
               .tint(.green)
+
+              Button {
+                addNotification(for: prospect)
+              } label: {
+                Label("Remind Me", systemImage: "bell")
+              }
+              .tint(.orange)
             }
           }
         }
@@ -99,6 +107,38 @@ struct ProspectsView: View {
       prospects.add(person)
     case .failure(let error):
       print("Scanning failed: \(error.localizedDescription)")
+    }
+  }
+
+  func addNotification(for prospect: Prospect) {
+    let center = UNUserNotificationCenter.current()
+    let addRequest = {
+      let content = UNMutableNotificationContent()
+      content.title = "Contact \(prospect.name)"
+      content.subtitle = prospect.emailAddress
+      content.sound = UNNotificationSound.default
+      var dateComponents = DateComponents()
+      dateComponents.hour = 9
+      let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents,
+                                                  repeats: false)
+      let request = UNNotificationRequest(identifier: UUID().uuidString,
+                                          content: content,
+                                          trigger: trigger)
+      center.add(request)
+    }
+
+    center.getNotificationSettings { settings in
+      if settings.authorizationStatus == .authorized {
+        addRequest()
+      } else {
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { success, error in
+          if success {
+            addRequest()
+          } else {
+            print("Error accured: \(error?.localizedDescription)")
+          }
+        }
+      }
     }
   }
 }
