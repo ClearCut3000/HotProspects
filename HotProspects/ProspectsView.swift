@@ -47,12 +47,18 @@ struct ProspectsView: View {
     NavigationView {
       List {
         ForEach(filtereredProspects) { prospect in
-          VStack(alignment: .leading) {
-            Text(prospect.name)
-              .font(.headline)
+          HStack {
+            VStack(alignment: .leading) {
+              Text(prospect.name)
+                .font(.headline)
 
-            Text(prospect.emailAddress)
-              .foregroundColor(.secondary)
+              Text(prospect.emailAddress)
+                .foregroundColor(.secondary)
+            }
+            if prospect.isContacted && filter == .none {
+              Spacer()
+              Image(systemName: "checkmark.circle.fill")
+            }
           }
           .swipeActions {
             if prospect.isContacted {
@@ -135,7 +141,7 @@ struct ProspectsView: View {
           if success {
             addRequest()
           } else {
-            print("Error accured: \(error?.localizedDescription)")
+            print("Error accured: \(String(describing: error?.localizedDescription))")
           }
         }
       }
