@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36C0D52429184E7500369390 /* Extension+FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C0D52329184E7500369390 /* Extension+FileManager.swift */; };
 		36CCAC2F290EFEDD001D1CE4 /* HotProspectsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CCAC2E290EFEDD001D1CE4 /* HotProspectsApp.swift */; };
 		36CCAC31290EFEDD001D1CE4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CCAC30290EFEDD001D1CE4 /* ContentView.swift */; };
 		36CCAC33290EFEDF001D1CE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36CCAC32290EFEDF001D1CE4 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		36C0D52329184E7500369390 /* Extension+FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+FileManager.swift"; sourceTree = "<group>"; };
 		36CCAC2B290EFEDD001D1CE4 /* HotProspects.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotProspects.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36CCAC2E290EFEDD001D1CE4 /* HotProspectsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotProspectsApp.swift; sourceTree = "<group>"; };
 		36CCAC30290EFEDD001D1CE4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				36CCAC412911A0F0001D1CE4 /* MeView.swift */,
 				36D7802E2916FFB10051FC23 /* ImageSaver.swift */,
 				36CCAC432911A766001D1CE4 /* Prospect.swift */,
+				36C0D52329184E7500369390 /* Extension+FileManager.swift */,
 			);
 			path = HotProspects;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 				36CCAC402911A0DD001D1CE4 /* ProspectsView.swift in Sources */,
 				36CCAC31290EFEDD001D1CE4 /* ContentView.swift in Sources */,
 				36CCAC2F290EFEDD001D1CE4 /* HotProspectsApp.swift in Sources */,
+				36C0D52429184E7500369390 /* Extension+FileManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
