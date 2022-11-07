@@ -61,7 +61,7 @@ struct ProspectsView: View {
   var body: some View {
     NavigationView {
       List {
-        Section("Use a swipe to manage the list") {
+        Section("Use right/left swipe to manage list") {
           ForEach(filtereredProspects) { prospect in
             HStack {
               VStack(alignment: .leading) {
