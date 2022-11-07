@@ -47,8 +47,21 @@ class Prospect: Identifiable, Codable {
     save()
   }
 
+  func delete(_ prospect: Prospect) {
+    if let index = people.firstIndex(where: { man in
+      man.name == prospect.name && man.emailAddress == prospect.emailAddress
+    }) {
+      people.remove(at: index)
+      save()
+    }
+  }
+
   func add(_ prospect: Prospect) {
-    people.append(prospect)
-    save()
+    if !people.contains(where: { man in
+      man.name == prospect.name && man.emailAddress == prospect.emailAddress
+    }) {
+      people.append(prospect)
+      save()
+    }
   }
 }
