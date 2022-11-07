@@ -30,6 +30,7 @@ class Prospect: Identifiable, Codable {
         return
       }
     }
+    // if no saved data!
     people = []
   }
 
